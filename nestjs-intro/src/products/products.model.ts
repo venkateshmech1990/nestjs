@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { ApiProperty } from '@nestjs/swagger';
 
 export const ProductSchema = new mongoose.Schema({//mongoose uses javascript objects
     title: {type: String, required: true},
@@ -7,9 +8,12 @@ export const ProductSchema = new mongoose.Schema({//mongoose uses javascript obj
 });
 
 
-export interface Products extends mongoose.Document{
+export class Products extends mongoose.Document{
      id: string;  
-     title: string;  
+     @ApiProperty()
+     title: string; 
+     @ApiProperty() 
      description: string;  
+     @ApiProperty()
      price: number;
 }
